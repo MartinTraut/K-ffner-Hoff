@@ -1,0 +1,298 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── Küffner Hof Design System ── */
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKd3vXDXbtM.woff2")
+    format("woff2");
+}
+
+@theme inline {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono);
+
+  /* Küffner Hof Colors */
+  --color-kh-green: #0f2a25;
+  --color-kh-green-light: #1a3d36;
+  --color-kh-green-dark: #091c18;
+  --color-kh-cream: #f6f1ec;
+  --color-kh-cream-dark: #ebe4dc;
+  --color-kh-sand: #d8b48a;
+  --color-kh-sand-light: #e5caa8;
+  --color-kh-sand-dark: #c49e6e;
+  --color-kh-wine: #6b1f2b;
+  --color-kh-wine-light: #8a2938;
+  --color-kh-white: #fdfbf9;
+  --color-kh-text: #2c2c2c;
+  --color-kh-text-light: #6b6b6b;
+
+  /* shadcn mappings */
+  --color-background: var(--color-kh-cream);
+  --color-foreground: var(--color-kh-text);
+  --color-primary: var(--color-kh-green);
+  --color-primary-foreground: var(--color-kh-cream);
+  --color-secondary: var(--color-kh-sand);
+  --color-secondary-foreground: var(--color-kh-green);
+  --color-accent: var(--color-kh-sand);
+  --color-accent-foreground: var(--color-kh-green);
+  --color-muted: var(--color-kh-cream-dark);
+  --color-muted-foreground: var(--color-kh-text-light);
+  --color-destructive: var(--color-kh-wine);
+  --color-border: #d4ccc3;
+  --color-input: #d4ccc3;
+  --color-ring: var(--color-kh-sand);
+  --color-card: var(--color-kh-white);
+  --color-card-foreground: var(--color-kh-text);
+  --color-popover: var(--color-kh-white);
+  --color-popover-foreground: var(--color-kh-text);
+
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
+  --radius-xl: 0.5rem;
+}
+
+/* ── Base styles ── */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-kh-cream text-kh-text font-sans;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif text-kh-green;
+  }
+
+  ::selection {
+    background-color: #d8b48a40;
+    color: #0f2a25;
+  }
+}
+
+/* ── Utility classes ── */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ── Animations – Premium easing ── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Premium expo-out easing */
+.animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-right {
+  animation: slide-in-right 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-left {
+  animation: slide-in-left 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-reveal-up {
+  animation: reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+
+/* ── Image hover effects ── */
+
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img,
+.img-zoom video {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.img-zoom:hover img,
+.img-zoom:hover video {
+  transform: scale(1.05);
+}
+
+/* ── Smooth link underlines ── */
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ── Custom scrollbar ── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-kh-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-kh-sand);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-kh-sand-dark);
+}
+
+/* ── Divider pattern ── */
+
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.divider-ornament::before,
+.divider-ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-kh-sand);
+  opacity: 0.4;
+}
+
+/* ── Focus styles ── */
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-kh-sand);
+  outline-offset: 1px;
+}
+
+/* ── Smooth transitions on interactive elements ── */
+
+a, button {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
